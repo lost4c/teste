@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--     <color name="corfundo">#08aee2</color> -->
+    
+    <string name="app_name">PARK4ME</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="districts_name">Bairro</string>
+    <string name="selecao">Selecione Bairro</string>
+    
+    <string-array name="districts_name">
+        <item>Botafogo</item>
+        <item>Catete</item>
+        <item>Copacabana</item>
+        <item>Flamengo</item>
+        <item >Gávea</item>
+        <item >Glória</item>
+        <item >Humaitá</item>
+        <item >Ipanema</item>
+        <item >Jardim Botânico</item>
+        <item >Lagoa</item>
+        <item >Laranjeiras</item>
+        <item >Leblon</item>
+        <item >Leme</item>
+        <item >Urca</item>
+    </string-array>
+
+</resources>
