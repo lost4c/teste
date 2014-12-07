@@ -14,7 +14,7 @@ public class MainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		
 		String[] bairros = new String[]
-				{"Botafogo", "Copacabana", "Flamengo", "Ipanema", "Leblon", "Laranjeiras", "Região Central", "Sair"};
+				{"Botafogo", "Copacabana/Leme", "Flamengo/Laranjeiras", "Ipanema", "Leblon", "Região Central", "Sair"};
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1 , bairros);
 		
@@ -26,23 +26,54 @@ public class MainActivity extends ListActivity {
 		
 		switch(position){
 			case 0:
+				//botafogo
 				intent = new Intent(this, map.class);
+				intent.putExtra("lat", -22.954339);
+				intent.putExtra("lng", -43.1909142);
 				startActivity(intent);
 				break;
 			case 1:
+				//copacabana/leme
 				intent = new Intent(this, map.class);
+				intent.putExtra("lat", -22.9732708);
+				intent.putExtra("lng", -43.1857553);
 				startActivity(intent);
 				break;
 			case 2:
+				//flamengo
+				intent = new Intent(this, map.class);
+				intent.putExtra("lat", -22.9356357);
+				intent.putExtra("lng", -43.1813744);
+				startActivity(intent);
 				break;
 			case 3:
-			break;
+				//ipanema
+				intent = new Intent(this, map.class);
+				intent.putExtra("lat", -22.9849889);
+				intent.putExtra("lng", -43.2044715);
+				startActivity(intent);
+				break;
 			case 4:
-			break;
+				//leblon
+				intent = new Intent(this, map.class);
+				intent.putExtra("lat", -22.9840451);
+				intent.putExtra("lng", -43.2247083);
+				startActivity(intent);
+				break;
 			case 5:
-			break;
-			case 6:
-			break;
+				//regiao central
+				intent = new Intent(this, map.class);
+				intent.putExtra("lat", -22.9053526);
+				intent.putExtra("lng", -43.1781185);
+				startActivity(intent);
+				break;
+//			case 6:
+//				
+//				intent = new Intent(this, map.class);
+//				intent.putExtra("lat", -22.9873758);
+//				intent.putExtra("lng", -43.1237373);
+//				startActivity(intent);
+//				break;
 			default:
 				finish();
 		}

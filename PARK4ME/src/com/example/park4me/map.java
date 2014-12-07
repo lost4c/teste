@@ -1,6 +1,7 @@
 package com.example.park4me;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -35,9 +36,11 @@ public class map extends FragmentActivity {
 		GoogleMapOptions options = new GoogleMapOptions();
 		options.zOrderOnTop(true);
 		
+		
 		mapFrag = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 		
 		mMap = mapFrag.getMap();
+		mMap.setTrafficEnabled(true);
 //quero chamar o configmap pra posicionamento inicial		
 		configMap();
 	}
@@ -69,14 +72,24 @@ public class map extends FragmentActivity {
 		mMap = mapFrag.getMap();
 		mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 		
-//  recebendo latlng previamento essa linha abaixo sai
-		LatLng latlng = new LatLng(-23.564224, -46.653156);
+//carregando latlng
+		// getIntent() is a method from the started activity
+		Intent intent = getIntent(); // gets the previously created intent
+		double defaultLat;
+		defaultLat = -22.9112728;
+		double defaultLng;
+		defaultLng = -43.4484478;
+		double first = intent.getDoubleExtra("lat", defaultLat); // will return "FirstKeyValue"
+		double second= intent.getDoubleExtra("lng", defaultLng); // will return "SecondKeyValue"
 		
-		CameraPosition cameraPosition = new CameraPosition.Builder().target(latlng).zoom(18).bearing(0).tilt(90).build();
+//configuraçao camera do maps
+		LatLng latlng = new LatLng(first, second);
+		
+		CameraPosition cameraPosition = new CameraPosition.Builder().target(latlng).zoom(15).bearing(0).tilt(0).build();
 		CameraUpdate update = CameraUpdateFactory.newCameraPosition(cameraPosition);
 		
 		//map.moveCamera(update);
-		mMap.animateCamera(update, 3000, new CancelableCallback(){
+		mMap.animateCamera(update, 2000, new CancelableCallback(){
 			@Override
 			public void onCancel() {
 				Log.i("Script", "CancelableCallback.onCancel()");
