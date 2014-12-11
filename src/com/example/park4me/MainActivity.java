@@ -34,10 +34,11 @@ public class MainActivity extends ListActivity {
 				break;
 			case 1:
 				//copacabana/leme
-				intent = new Intent(this, map.class);
-				intent.putExtra("lat", -22.9732708);
-				intent.putExtra("lng", -43.1857553);
-				startActivity(intent);
+//				intent = new Intent(this, map.class);
+//				intent.putExtra("lat", -22.9732708);
+//				intent.putExtra("lng", -43.1857553);
+//				startActivity(intent);
+				iniciaMapaNaRegiao(-22.9732708,-43.1857553);
 				break;
 			case 2:
 				//flamengo
@@ -77,6 +78,13 @@ public class MainActivity extends ListActivity {
 			default:
 				finish();
 		}
+	}
+	private void iniciaMapaNaRegiao(double latitude, double longitude) {
+		Intent intent = new Intent(this, map.class);
+		intent = new Intent(this, map.class);
+		intent.putExtra("lat", latitude);
+		intent.putExtra("lng", longitude);
+		startActivity(intent);
 	}
 }
 //public class MainActivity extends Activity {  

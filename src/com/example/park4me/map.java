@@ -1,6 +1,9 @@
 package com.example.park4me;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -15,6 +18,7 @@ import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class map extends FragmentActivity {
 	private GoogleMap mMap;
@@ -88,6 +92,9 @@ public class map extends FragmentActivity {
 		CameraPosition cameraPosition = new CameraPosition.Builder().target(latlng).zoom(15).bearing(0).tilt(0).build();
 		CameraUpdate update = CameraUpdateFactory.newCameraPosition(cameraPosition);
 		
+		//Coloca os markers no mapa
+		adicionaMarkersMapa();
+		
 		//map.moveCamera(update);
 		mMap.animateCamera(update, 2000, new CancelableCallback(){
 			@Override
@@ -116,5 +123,30 @@ public class map extends FragmentActivity {
 	
 	public void voltar(View view){
 		finish();
+	}
+	
+	/*
+	 * Loubake
+	 */
+	private List<Estacionamento> getEstacionamentos() {
+		List<Estacionamento> estacionamentos = new ArrayList<Estacionamento>();
+		estacionamentos.add(new Estacionamento("Estacionamento 1", -22.970298, -43.188207));
+		estacionamentos.add(new Estacionamento("Estacionamento 2", -22.969725, -43.187236));
+		estacionamentos.add(new Estacionamento("Estacionamento 3", -22.968850, -43.182048));
+		return estacionamentos;
+		
+		/*
+		 * Aqui vai vou recuperar a lista de estacionamentos da Intent
+		 * Provavelmente, este método vai morrer, já que é possível pegar a lista da Intent em qualquer outro lugar
+		 */
+	}
+	
+	private void adicionaMarkersMapa() {
+		List<Estacionamento> estacionamentos = getEstacionamentos();
+		for (Estacionamento estacionamento : estacionamentos) {
+			mMap.addMarker(new MarkerOptions()
+				.position(new LatLng(estacionamento.getLatitude(), estacionamento.getLongitude()))
+				.title(estacionamento.getNome()));
+		}
 	}
 }

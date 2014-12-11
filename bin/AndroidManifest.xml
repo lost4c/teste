@@ -55,9 +55,15 @@
         <meta-data
     	android:name="com.google.android.gms.version"
     	android:value="@integer/google_play_services_version" />
+<!--                 Key criada pelo Lucas para testar na máquina dele (Apagar depois do projeto pronto): -->
         <meta-data
 		    android:name="com.google.android.maps.v2.API_KEY"
 		    android:value="AIzaSyC3qwtdlfbZLsVV6TGym-QIVW0cShoeBug"/>
+        
+<!--                 Key criada pelo Loubake para testar na máquina dele (Apagar depois do projeto pronto): -->
+<!-- 	<meta-data  -->
+<!-- 	    android:name="com.google.android.maps.v2.API_KEY" -->
+<!-- 	    android:value="AIzaSyCNtwLXeHbZC86C0PEeW9LfHhQ8SLw1R68"/> -->
     </application>
 
 </manifest>
