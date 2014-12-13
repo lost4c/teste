@@ -145,21 +145,22 @@ public class map extends FragmentActivity implements LocationListener,OnMarkerCl
 	private void adicionaMarkersMapa() {
 		
 		List<Estacionamento> estacionamentos = getEstacionamentos();
-		for (Estacionamento estacionamento : estacionamentos) {
-			final MarkerOptions op;
 	
-			mMap.addMarker(op = new MarkerOptions()
+		
+		for (Estacionamento estacionamento : estacionamentos) {
+			mMap.addMarker(new MarkerOptions()
 				.position(new LatLng(estacionamento.getLatitude(), estacionamento.getLongitude()))
-				.title(estacionamento.getNome()));
-			mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
+				.title(estacionamento.getNome()));}
+		
+		mMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 				
-				@Override
-				public boolean onMarkerClick(Marker marker) {
+			@Override
+			public boolean onMarkerClick(Marker marker) {
 //					// TODO Auto-generated method stub
 					double latitude=0;
 					double longitude=0;
 					LatLng pos = new LatLng(latitude, longitude);
-					pos = (op.getPosition());
+					pos = (marker.getPosition());
 					
 //					LatLng pos0 = new LatLng(latitude, longitude);
 					Location findme = mMap.getMyLocation();
@@ -205,7 +206,7 @@ public class map extends FragmentActivity implements LocationListener,OnMarkerCl
 			});	
 				
 		}
-	}
+	
 	
 	public void configLocation(LatLng latLng){
 //		CameraPosition cameraPosition = new CameraPosition.Builder().target(latLng).zoom(15).bearing(0).tilt(0).build();
